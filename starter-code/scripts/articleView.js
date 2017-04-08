@@ -82,14 +82,16 @@ articleView.initNewArticlePage = function() {
     e.preventDefault();
     articleView.create();
   });
-  $('#articles').html('');
+articleView.setTeasers();
+  // $('#articles').html('');
 };
 
 articleView.create = function() {
   // TODO: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
-  var newArticle = {}
-  var $form = $('new-article-form');
+  var newArticle = {};
+  var $form = $('#new-article-form');
+
 
   // TODO: Instantiate an article based on what's in the form fields:
   newArticle.title = $form.find('input[name="article-title"]').val();
@@ -101,11 +103,10 @@ articleView.create = function() {
     newArticle.publishedOn = new Date();
   }
 
-
-
-
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-  // var newArticleHtml = Handblebars.compile($('#article-template').html())(newArticle);
+//  var template = Handlebars.compile($('#article-template').html());
+//  var new ArticleHtml = template(newArticle);
+
   var article = new Article(newArticle);
   $('#articles').prepend(article.toHtml());
 
